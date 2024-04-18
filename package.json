@@ -21,11 +21,12 @@
     "typescript": "^5.4.2"
   },
   "scripts": {
-    "start": "node ./dist/app.js",
+    "start": "node start.js",
     "test": "jest",
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
     "build": "tsc && prisma generate"
   },
+  
   "author": "Eddy",
   "license": "ISC",
   "description": "",
