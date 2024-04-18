@@ -1,2 +1,11 @@
-import { PrismaClient } from '@prisma/client';
-export const prisma = new PrismaClient();
+// prisma.js
+let prisma: any;
+
+function initializePrisma() {
+  if (!prisma) {
+    prisma = require('@prisma/client').PrismaClient;
+  }
+  return prisma;
+}
+
+module.exports = initializePrisma;

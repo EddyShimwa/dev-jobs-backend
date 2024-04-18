@@ -1,4 +1,8 @@
-import { prisma } from './prisma';
+const initializePrisma = require('./prisma');
+
+const prisma = initializePrisma();
+
+// Use prisma as you normally would
 
 export interface JobDocument {
   id?: number;
