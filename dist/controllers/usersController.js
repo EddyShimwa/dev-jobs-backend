@@ -10,22 +10,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUser = exports.getUser = exports.getUsers = void 0;
-const prisma_1 = require("../models/prisma");
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const users = yield prisma_1.prisma.user.findMany();
+    const users = yield prisma.user.findMany();
     res.json(users);
 });
 exports.getUsers = getUsers;
 const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const user = yield prisma_1.prisma.user.findUnique({ where: { id: Number(id) } });
+    const user = yield prisma.user.findUnique({ where: { id: Number(id) } });
     res.json(user);
 });
 exports.getUser = getUser;
 //delete user
 const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    yield prisma_1.prisma.user.delete({ where: { id: Number(id) } });
+    yield prisma.user.delete({ where: { id: Number(id) } });
     res.json({ message: 'User deleted successfully' });
 });
 exports.deleteUser = deleteUser;

@@ -1,4 +1,4 @@
-const initializePrisma = require('./prisma');
+import { initializePrisma } from '../models/prisma';
 
 const prisma = initializePrisma();
 

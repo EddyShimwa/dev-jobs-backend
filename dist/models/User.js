@@ -13,14 +13,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.comparePassword = exports.findUserByEmail = exports.createUser = void 0;
-const prisma_1 = require("./prisma");
+const initializePrisma = require('./prisma');
+const prisma = initializePrisma();
+// Use prisma as you normally would
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const createUser = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield prisma_1.prisma.user.create({ data });
+    return yield prisma.user.create({ data });
 });
 exports.createUser = createUser;
 const findUserByEmail = (email) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield prisma_1.prisma.user.findUnique({ where: { email } });
+    return yield prisma.user.findUnique({ where: { email } });
 });
 exports.findUserByEmail = findUserByEmail;
 const comparePassword = (password, hashedPassword) => __awaiter(void 0, void 0, void 0, function* () {

@@ -10,17 +10,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteJob = exports.findAllJobs = exports.findJobById = exports.createJob = void 0;
-const prisma_1 = require("./prisma");
+const initializePrisma = require('./prisma');
+const prisma = initializePrisma();
 const createJob = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield prisma_1.prisma.job.create({ data });
+    return yield prisma.job.create({ data });
 });
 exports.createJob = createJob;
 const findJobById = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield prisma_1.prisma.job.findUnique({ where: { id } });
+    return yield prisma.job.findUnique({ where: { id } });
 });
 exports.findJobById = findJobById;
 const findAllJobs = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield prisma_1.prisma.job.findMany({
+    return yield prisma.job.findMany({
         where: {
             isAvailable: true
         }
@@ -28,6 +29,6 @@ const findAllJobs = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.findAllJobs = findAllJobs;
 const deleteJob = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    yield prisma_1.prisma.job.delete({ where: { id } });
+    yield prisma.job.delete({ where: { id } });
 });
 exports.deleteJob = deleteJob;
