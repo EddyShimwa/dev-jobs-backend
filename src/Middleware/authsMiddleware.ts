@@ -1,7 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { UserDocument } from '../models/User';
-import { prisma } from '../models/prisma';
+import { initializePrisma } from '../models/prisma';
+
+const prisma = initializePrisma();
+
+// Use prisma as you normally would
 
 declare global {
   namespace Express {

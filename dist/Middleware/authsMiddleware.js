@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.isAdmin = exports.isAuthenticated = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const prisma_1 = require("../models/prisma");
+const prisma = (0, prisma_1.initializePrisma)();
 const isAuthenticated = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
@@ -24,7 +25,7 @@ const isAuthenticated = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
             return;
         }
         const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
-        const user = yield prisma_1.prisma.user.findUnique({ where: { id: Number(decoded.userId) } });
+        const user = yield prisma.user.findUnique({ where: { id: Number(decoded.userId) } });
         if (!user) {
             res.status(401).json({ error: 'Unauthorized' });
             return;

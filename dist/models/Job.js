@@ -10,8 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteJob = exports.findAllJobs = exports.findJobById = exports.createJob = void 0;
-const initializePrisma = require('./prisma');
-const prisma = initializePrisma();
+const prisma_1 = require("../models/prisma");
+const prisma = (0, prisma_1.initializePrisma)();
 const createJob = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield prisma.job.create({ data });
 });
