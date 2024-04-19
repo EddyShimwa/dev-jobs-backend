@@ -1,32 +1,33 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("DATABASE_URL")
+}
+
 model User {
-  id       Int      @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   username String
-  email    String   @unique
+  email    String @unique
   password String
   role     String
 }
 
 model Job {
-  id          Int      @id @default(autoincrement())
-  company     String
-  logo        String
-  position    String
-  postedAt    DateTime @default(now())
-  contract    String
-  location    String
-  website     String
-  isAvailable Boolean
-  apply       String
-  description String
+  id           Int      @id @default(autoincrement())
+  company      String
+  logo         String
+  position     String
+  postedAt     DateTime @default(now())
+  contract     String
+  location     String
+  website      String
+  isAvailable  Boolean
+  apply        String
+  description  String
   requirements Json
-  role        Json
+  role         Json
 }

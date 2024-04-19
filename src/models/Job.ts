@@ -1,7 +1,6 @@
 import { initializePrisma } from '../models/prisma';
 
 const prisma = initializePrisma();
-
 // Use prisma as you normally would
 
 export interface JobDocument {
